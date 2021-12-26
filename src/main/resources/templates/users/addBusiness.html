@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Agregar Direccion de Negocio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h2 class="mb-5">Agregar Direccion de Negocio</h2>
+		<div class="row">
+			<div class="col-md-6">
+			<form action="#" th:action="@{/user/business/AddB}" th:object="${businessentityaddress}"
+					method="post">	
+				<div class="row">
+					
+					
+					<div class="form-group col-md-6">
+							<label for="businessentity" class="col-form-label">Entidad</label> <select
+								th:field="*{businessentity}">
+								<option th:each="be : ${businessentities}" th:value="${be.businessentityid}"
+									class="form-control" th:text="${be.name}"
+									th:selected="${businessentityaddress.businessentity=be}"></option>
+							</select> <span th:if="${#fields.hasErrors('businessentity')}"
+								th:errors="*{businessentity}" class="text-danger"></span>
+					</div>
+					
+					
+					<div class="form-group col-md-6">
+							<label for="addresstype" class="col-form-label">Tipo</label> <select
+								th:field="*{addresstype}">
+								<option th:each="adt : ${addresstypes}" th:value="${adt.addresstypeid}"
+									class="form-control" th:text="${adt.name}"
+									th:selected="${businessentityaddress.addresstype=adt}"></option>
+							</select> <span th:if="${#fields.hasErrors('addresstype')}"
+								th:errors="*{addresstype}" class="text-danger"></span>
+					</div>
+					
+					
+					<div class="form-group col-md-6">
+							<label for="address" class="col-form-label">Direccion</label> <select
+								th:field="*{address}">
+								<option th:each="ad : ${addresses}" th:value="${ad.addressid}"
+									class="form-control" th:text="${ad.addressline1}"
+									th:selected="${businessentityaddress.address=ad}"></option>
+							</select> <span th:if="${#fields.hasErrors('address')}"
+								th:errors="*{address}" class="text-danger"></span>
+					</div>
+					
+					<div class="form-group col-md-6">
+							<label for="address" class="col-form-label">Ciudad</label> <select
+								th:field="*{address}">
+								<option th:each="ad : ${addresses}" th:value="${ad.addressid}"
+									class="form-control" th:text="${ad.city}"
+									th:selected="${businessentityaddress.address=ad}"></option>
+							</select> <span th:if="${#fields.hasErrors('address')}"
+								th:errors="*{address}" class="text-danger"></span>
+					</div>
+					
+					<div class="form-group col-md-6">
+							<label for="address" class="col-form-label">Codigo Postal</label> <select
+								th:field="*{address}">
+								<option th:each="ad : ${addresses}" th:value="${ad.addressid}"
+									class="form-control" th:text="${ad.postalcode}"
+									th:selected="${businessentityaddress.address=ad}"></option>
+							</select> <span th:if="${#fields.hasErrors('address')}"
+								th:errors="*{address}" class="text-danger"></span>
+					</div>
+					
+					
+					
+					
+					
+					
+					<div class="row">
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-primary" value="Agregar">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="reset" class="btn btn-secondary" value="Limpiar">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-secondary" value="Cancelar">
+						</div>
+					</div>
+					
+					
+					
+				</div>
+			</form>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>

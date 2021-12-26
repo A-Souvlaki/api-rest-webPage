@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="ie=edge">
+<title>Agregar Clientes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+<link rel="stylesheet"
+	href="https://use.fontawesome.com/releases/v5.4.1/css/all.css"
+	integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz"
+	crossorigin="anonymous">
+<link rel="stylesheet" href="../css/shards.min.css">
+</head>
+<body>
+	<div class="container my-5">
+		<h2 class="mb-5">Crear Cliente</h2>
+		<div class="row">
+			<div class="col-md-6">
+			<form action="#" th:action="@{/admin/customer/addCustomer}" th:object="${customer}"
+					method="post">	
+				<div class="row">
+				
+					<div class="form-group col-md-6">
+							<label for="person" class="col-form-label">Id Persona</label> <select
+								th:field="*{personid}">
+								<option th:each="pe : ${persons}" th:value="${pe.personid}"
+								class="form-control" th:text="${pe.personid}"
+								></option>
+							</select> <span th:if="${#fields.hasErrors('personid')}"
+								th:errors="*{personid}" class="text-danger"></span>
+					</div>
+					
+					<div class="form-group col-md-6">
+							<label for="store" class="col-form-label">Tienda</label> <select
+								th:field="*{store.businessentityid}">
+								<option th:each="st : ${stores}" th:value="${st.businessentityid}"
+								class="form-control" th:text="${st.name}"
+									th:selected="${customer.store=st}"></option>
+							</select> <span th:if="${#fields.hasErrors('store')}"
+								th:errors="*{store}" class="text-danger"></span>
+					</div>
+					
+					<div class="row">
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-primary" value="Agregar">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="reset" class="btn btn-secondary" value="Limpiar">
+						</div>
+						<div class="col-md-3 mt-3">
+							<input type="submit" name="action" class="btn btn-secondary" value="Cancelar">
+						</div>
+					</div>
+					
+				</div>
+			</form>	
+			</div>
+		</div>
+	</div>
+</body>
+</html>
